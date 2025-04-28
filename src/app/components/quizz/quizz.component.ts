@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class QuizzComponent {
 
+  title:string = ""
+
+  constructor(){
+
+  }
+
+  ngOnInit() : void {
+
+  }
 }
