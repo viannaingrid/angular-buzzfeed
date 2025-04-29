@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import quizz_questions  from '../../../assets/data/quizz_questions.json'
 
 @Component({
   selector: 'app-quizz',
@@ -25,6 +26,30 @@ export class QuizzComponent {
   }
 
   ngOnInit() : void {
+    if(quizz_questions){
+      this.finished = false
+      this.title = quizz_questions.title
 
+      this.questions = quizz_questions.questions
+      this.questionsSelected = this.questions[this.questionIndex]
+
+      this.questionIndex = 0
+      this.questionMaxIndex = this.questions.length
+
+    }
+  }
+
+  playerChoice(value:string){
+    this.answers.push(value)
+  }
+
+  async nextStep(){
+    this.questionIndex++
+
+    if(this.questionMaxIndex > this.questionIndex){
+      this.questionsSelected = this.questions[this.questionIndex]
+    }else{
+      this.finished = true
+    }
   }
 }
