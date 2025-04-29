@@ -3,14 +3,14 @@
     <img src="../../../assets/imgs/logo.png" alt="Logo da BuzzFeed">
     <h3>{{ title }}</h3>
   </div>
-  <div class="quizz_questions">
+  <div *ngIf="!finished" class="quizz_questions">
     <h3>{{ questionsSelected.question }}</h3>
   </div>
-  <div class="quizz_options">
+  <div *ngIf="!finished" class="quizz_options">
     <button *ngFor="let option of questionsSelected.options" (click)="playerChoice(option.alias)"  class="btn-option">{{ option.name }}</button>
   </div>
   <div *ngIf="finished" class="quizz_results">
     <h1>O seu resultado é </h1>
-    <p>resposta selecionada</p>
+    <p>{{ answersSelected }}</p>
   </div>
 </section>
